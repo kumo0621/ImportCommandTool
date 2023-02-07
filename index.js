@@ -1,180 +1,149 @@
-$(document).ready(function() {
-    $("#3").click(function() {
-      var values = ["サーモン", "オニオンサーモン", "焼とろサーモン", "おろし焼とろサーモン", "ジャンボとろサーモン","サーモンちーず","炙りサーモンバジルチーズ", "活〆寒ぶり", "活〆匠の漬け寒ぶり","えんがわ","焼き鱈", "〆真さば", "〆真さば（ごまネギ）","塩〆いわし（ネギ・生姜）","塩〆いわし", "えび", "えびチーズ","えびバジルチーズ","えびアボカド", "タルタルえびアボカド", "甘えび","えび天にぎり","上えび天にぎり", "蒸しほっき貝", "煮あなご","たまご","牛塩カルビ", "生ハム", "特ネタ中トロ","びんとろ","生サーモン", "サーモンバジルモッツァレラ", "活〆ぶりとろ","活〆匠の漬けぶりとろ","活〆炙りぶりしゃぶ", "活〆真鯛", "漬けごま活〆真鯛","大えび","ほたて貝柱", "大つぶ貝", "大赤貝","うなぎの蒲焼き","生ハムバジルモッツァレラ", "紅鮭の塩筋子包", "サーモン3貫盛り","肉3貫盛り","特ネタ大とろ", "特ネタ大とろ焦がし醤油", "大切りあわび2貫","まぐろ3貫盛り","鮮魚3貫盛り", "軍艦ねぎまぐろ", "まぐろ山かけ","まぐろユッケ（卵黄醤油）","かにみそ", "軍艦甘エビ", "とびこ軍艦","ししゃもこ軍艦","たらマヨ", "たらこ", "数の子松前漬け","コーン","ツナサラダ", "シーサラダ", "カニ風サラダ","たまごサラダ","いかオクラめかぶ", "小粒納豆", "きゅうり巻","小粒納豆巻","梅きゅうり巻", "海老フライアボカドロール", "本ずわい蟹軍艦","いくら","たら白子", "あん肝", "鉄火巻","鯛だし塩ラーメン","わかめうどん", "きつねうどん", "かけうどん","魚のアラの赤だし","あさりの赤だし", "あおさと海苔の赤だし", "はまぐりの味噌汁","あおさと海苔の味噌汁","季節の茶碗蒸し", "季節のあんかけ茶碗蒸し", "フライドチキン","フライドポテト","まるごと海老の柚子こしょう天ぷら", "ポテサラ", "だし巻き玉子","練乳いちごパフェ","北海道ミルククレープメルバ", "カタラーナアイスブリュレ", "フォンダンショコラバニラアイス添え","フォンダンショコラ","ショコラケーキリッチ", "北海道ミルククレープ", "クラシックプリン","大学いも","わらびもち", "フローズンマンゴー", "懐かしノメロンシャーベット","北海道バニラアイス"];
-      var selectedValues = [];
-      for (var i = 0; i < 3; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+// http://html5.cyberlab.info/elements/forms/textarea-placeholder.html
+function convertForTool(moji){
+  // JSON(コマンド)をHTML(minecraft.tools用)に変換する
+    let data
+    try {
+      data = JSON.parse(moji)
+    }	catch (error) {
+      alert("コマンドのjsonが不正です。"+moji + error)
+      return
+    }
+    if (!Array.isArray(data)) {
+      data = [data]
+    }
+   
+    // 変換表
+    let colorMap = {
+      "black": "#000000",
+      "dark_blue": "#0000AA",
+      "dark_green": "#00AA00",
+      "dark_aqua": "#00AAAA",
+      "dark_red": "#AA0000",
+      "dark_purple": "#AA00AA",
+      "gold": "#FFAA00",
+      "gray": "#AAAAAA",
+      "dark_gray": "#555555",
+      "blue": "#5555FF",
+      "green": "#55FF55",
+      "aqua": "#55FFFF",
+      "red": "#FF5555",
+      "light_purple": "#ff55ff",
+      "yellow": "#FFFF55",
+      "white": "#FFFFFF",
+      
+    }
+    
+    // 変換
+    let result = ""
+    for (let aa of data) {
+      //alert(JSON.stringify(aa));
+       
+      
+      if (aa === "") {
+        continue
       }
-      alert(selectedValues.join("\n"));
-    });
-  });
-    $(document).ready(function() {
-    $("#5").click(function() {
-      var values = ["サーモン", "オニオンサーモン", "焼とろサーモン", "おろし焼とろサーモン", "ジャンボとろサーモン","サーモンちーず","炙りサーモンバジルチーズ", "活〆寒ぶり", "活〆匠の漬け寒ぶり","えんがわ","焼き鱈", "〆真さば", "〆真さば（ごまネギ）","塩〆いわし（ネギ・生姜）","塩〆いわし", "えび", "えびチーズ","えびバジルチーズ","えびアボカド", "タルタルえびアボカド", "甘えび","えび天にぎり","上えび天にぎり", "蒸しほっき貝", "煮あなご","たまご","牛塩カルビ", "生ハム", "特ネタ中トロ","びんとろ","生サーモン", "サーモンバジルモッツァレラ", "活〆ぶりとろ","活〆匠の漬けぶりとろ","活〆炙りぶりしゃぶ", "活〆真鯛", "漬けごま活〆真鯛","大えび","ほたて貝柱", "大つぶ貝", "大赤貝","うなぎの蒲焼き","生ハムバジルモッツァレラ", "紅鮭の塩筋子包", "サーモン3貫盛り","肉3貫盛り","特ネタ大とろ", "特ネタ大とろ焦がし醤油", "大切りあわび2貫","まぐろ3貫盛り","鮮魚3貫盛り", "軍艦ねぎまぐろ", "まぐろ山かけ","まぐろユッケ（卵黄醤油）","かにみそ", "軍艦甘エビ", "とびこ軍艦","ししゃもこ軍艦","たらマヨ", "たらこ", "数の子松前漬け","コーン","ツナサラダ", "シーサラダ", "カニ風サラダ","たまごサラダ","いかオクラめかぶ", "小粒納豆", "きゅうり巻","小粒納豆巻","梅きゅうり巻", "海老フライアボカドロール", "本ずわい蟹軍艦","いくら","たら白子", "あん肝", "鉄火巻","鯛だし塩ラーメン","わかめうどん", "きつねうどん", "かけうどん","魚のアラの赤だし","あさりの赤だし", "あおさと海苔の赤だし", "はまぐりの味噌汁","あおさと海苔の味噌汁","季節の茶碗蒸し", "季節のあんかけ茶碗蒸し", "フライドチキン","フライドポテト","まるごと海老の柚子こしょう天ぷら", "ポテサラ", "だし巻き玉子","練乳いちごパフェ","北海道ミルククレープメルバ", "カタラーナアイスブリュレ", "フォンダンショコラバニラアイス添え","フォンダンショコラ","ショコラケーキリッチ", "北海道ミルククレープ", "クラシックプリン","大学いも","わらびもち", "フローズンマンゴー", "懐かしノメロンシャーベット","北海道バニラアイス"];
-      var selectedValues = [];
-      for (var i = 0; i < 5; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      
+      let text = aa.text
+      //alert(aa.color)
+      if (undefined !== aa.color) {
+          text = `<span style="color:${colorMap[aa.color]};">${text}</span>`
       }
-      alert(selectedValues.join("\n"));
-    });
-  });
-    $(document).ready(function() {
-    $("#10").click(function() {
-      var values = ["サーモン", "オニオンサーモン", "焼とろサーモン", "おろし焼とろサーモン", "ジャンボとろサーモン","サーモンちーず","炙りサーモンバジルチーズ", "活〆寒ぶり", "活〆匠の漬け寒ぶり","えんがわ","焼き鱈", "〆真さば", "〆真さば（ごまネギ）","塩〆いわし（ネギ・生姜）","塩〆いわし", "えび", "えびチーズ","えびバジルチーズ","えびアボカド", "タルタルえびアボカド", "甘えび","えび天にぎり","上えび天にぎり", "蒸しほっき貝", "煮あなご","たまご","牛塩カルビ", "生ハム", "特ネタ中トロ","びんとろ","生サーモン", "サーモンバジルモッツァレラ", "活〆ぶりとろ","活〆匠の漬けぶりとろ","活〆炙りぶりしゃぶ", "活〆真鯛", "漬けごま活〆真鯛","大えび","ほたて貝柱", "大つぶ貝", "大赤貝","うなぎの蒲焼き","生ハムバジルモッツァレラ", "紅鮭の塩筋子包", "サーモン3貫盛り","肉3貫盛り","特ネタ大とろ", "特ネタ大とろ焦がし醤油", "大切りあわび2貫","まぐろ3貫盛り","鮮魚3貫盛り", "軍艦ねぎまぐろ", "まぐろ山かけ","まぐろユッケ（卵黄醤油）","かにみそ", "軍艦甘エビ", "とびこ軍艦","ししゃもこ軍艦","たらマヨ", "たらこ", "数の子松前漬け","コーン","ツナサラダ", "シーサラダ", "カニ風サラダ","たまごサラダ","いかオクラめかぶ", "小粒納豆", "きゅうり巻","小粒納豆巻","梅きゅうり巻", "海老フライアボカドロール", "本ずわい蟹軍艦","いくら","たら白子", "あん肝", "鉄火巻","鯛だし塩ラーメン","わかめうどん", "きつねうどん", "かけうどん","魚のアラの赤だし","あさりの赤だし", "あおさと海苔の赤だし", "はまぐりの味噌汁","あおさと海苔の味噌汁","季節の茶碗蒸し", "季節のあんかけ茶碗蒸し", "フライドチキン","フライドポテト","まるごと海老の柚子こしょう天ぷら", "ポテサラ", "だし巻き玉子","練乳いちごパフェ","北海道ミルククレープメルバ", "カタラーナアイスブリュレ", "フォンダンショコラバニラアイス添え","フォンダンショコラ","ショコラケーキリッチ", "北海道ミルククレープ", "クラシックプリン","大学いも","わらびもち", "フローズンマンゴー", "懐かしノメロンシャーベット","北海道バニラアイス"];
-      var selectedValues = [];
-      for (var i = 0; i < 10; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      if (undefined !== aa.clickEvent) {
+        if (aa.clickEvent.action == 'open_url') {
+          //result += aa.clickEvent
+          //text += JSON.stringify(aa.clickEvent)
+          let value = aa.clickEvent.value
+          text = `<a data-openurl="${value}" class="openurl" href="${value}">${text}</a>`
+        }else if (aa.clickEvent.action == 'run_command') {
+          let value = aa.clickEvent.value
+          text = `<a data-runcommand="${value}" class="runcommand" href="${value}">${text}</a>`
+        }
+  
       }
-      alert(selectedValues.join("\n"));
-    });
-  });
-    $(document).ready(function() {
-    $("#nigiri_3").click(function() {
-      var values = ["サーモン", "オニオンサーモン", "焼とろサーモン", "おろし焼とろサーモン", "ジャンボとろサーモン","サーモンちーず","炙りサーモンバジルチーズ", "活〆寒ぶり", "活〆匠の漬け寒ぶり","えんがわ","焼き鱈", "〆真さば", "〆真さば（ごまネギ）","塩〆いわし（ネギ・生姜）","塩〆いわし", "えび", "えびチーズ","えびバジルチーズ","えびアボカド", "タルタルえびアボカド", "甘えび","えび天にぎり","上えび天にぎり", "蒸しほっき貝", "煮あなご","たまご","牛塩カルビ", "生ハム", "特ネタ中トロ","びんとろ","生サーモン", "サーモンバジルモッツァレラ", "活〆ぶりとろ","活〆匠の漬けぶりとろ","活〆炙りぶりしゃぶ", "活〆真鯛", "漬けごま活〆真鯛","大えび","ほたて貝柱", "大つぶ貝", "大赤貝","うなぎの蒲焼き","生ハムバジルモッツァレラ", "紅鮭の塩筋子包", "サーモン3貫盛り","肉3貫盛り","特ネタ大とろ", "特ネタ大とろ焦がし醤油", "大切りあわび2貫","まぐろ3貫盛り","鮮魚3貫盛り"];
-      var selectedValues = [];
-      for (var i = 0; i < 3; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      if (undefined !== aa.underlined) {
+          // 文字 → <u>文字</u> に変換する
+          text = `<u>${text}</u>`
+          //@とシフトで出る　‘‘
       }
-     alert(selectedValues.join("\n"));
-    });
-  });
-      $(document).ready(function() {
-    $("#nigiri_5").click(function() {
-      var values = ["サーモン", "オニオンサーモン", "焼とろサーモン", "おろし焼とろサーモン", "ジャンボとろサーモン","サーモンちーず","炙りサーモンバジルチーズ", "活〆寒ぶり", "活〆匠の漬け寒ぶり","えんがわ","焼き鱈", "〆真さば", "〆真さば（ごまネギ）","塩〆いわし（ネギ・生姜）","塩〆いわし", "えび", "えびチーズ","えびバジルチーズ","えびアボカド", "タルタルえびアボカド", "甘えび","えび天にぎり","上えび天にぎり", "蒸しほっき貝", "煮あなご","たまご","牛塩カルビ", "生ハム", "特ネタ中トロ","びんとろ","生サーモン", "サーモンバジルモッツァレラ", "活〆ぶりとろ","活〆匠の漬けぶりとろ","活〆炙りぶりしゃぶ", "活〆真鯛", "漬けごま活〆真鯛","大えび","ほたて貝柱", "大つぶ貝", "大赤貝","うなぎの蒲焼き","生ハムバジルモッツァレラ", "紅鮭の塩筋子包", "サーモン3貫盛り","肉3貫盛り","特ネタ大とろ", "特ネタ大とろ焦がし醤油", "大切りあわび2貫","まぐろ3貫盛り","鮮魚3貫盛り"];
-      var selectedValues = [];
-      for (var i = 0; i < 5; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      if (undefined !== aa.bold) {
+          text = `<strong>${text}</strong>` 
       }
-      alert(selectedValues.join("\n"));
-    });
-  });
-      $(document).ready(function() {
-    $("#nigiri_10").click(function() {
-      var values = ["サーモン", "オニオンサーモン", "焼とろサーモン", "おろし焼とろサーモン", "ジャンボとろサーモン","サーモンちーず","炙りサーモンバジルチーズ", "活〆寒ぶり", "活〆匠の漬け寒ぶり","えんがわ","焼き鱈", "〆真さば", "〆真さば（ごまネギ）","塩〆いわし（ネギ・生姜）","塩〆いわし", "えび", "えびチーズ","えびバジルチーズ","えびアボカド", "タルタルえびアボカド", "甘えび","えび天にぎり","上えび天にぎり", "蒸しほっき貝", "煮あなご","たまご","牛塩カルビ", "生ハム", "特ネタ中トロ","びんとろ","生サーモン", "サーモンバジルモッツァレラ", "活〆ぶりとろ","活〆匠の漬けぶりとろ","活〆炙りぶりしゃぶ", "活〆真鯛", "漬けごま活〆真鯛","大えび","ほたて貝柱", "大つぶ貝", "大赤貝","うなぎの蒲焼き","生ハムバジルモッツァレラ", "紅鮭の塩筋子包", "サーモン3貫盛り","肉3貫盛り","特ネタ大とろ", "特ネタ大とろ焦がし醤油", "大切りあわび2貫","まぐろ3貫盛り","鮮魚3貫盛り"];
-      var selectedValues = [];
-      for (var i = 0; i < 10; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      if (undefined !== aa.italic) {
+          text = `<em>${text}</em>` 
       }
-      alert(selectedValues.join("\n"));
-    });
-  });
-      $(document).ready(function() {
-    $("#gunkan_3").click(function() {
-      var values = ["軍艦ねぎまぐろ", "まぐろ山かけ","まぐろユッケ（卵黄醤油）","かにみそ", "軍艦甘エビ", "とびこ軍艦","ししゃもこ軍艦","たらマヨ", "たらこ", "数の子松前漬け","コーン","ツナサラダ", "シーサラダ", "カニ風サラダ","たまごサラダ","いかオクラめかぶ", "小粒納豆", "きゅうり巻","小粒納豆巻","梅きゅうり巻", "海老フライアボカドロール", "本ずわい蟹軍艦","いくら","たら白子", "あん肝", "鉄火巻"];
-      var selectedValues = [];
-      for (var i = 0; i < 3; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      if (undefined !== aa.strikethrough) {
+          text = `<s>${text}</s>` 
       }
-     alert(selectedValues.join("\n"));
-    });
-  });
-        $(document).ready(function() {
-    $("#gunkan_5").click(function() {
-      var values = ["軍艦ねぎまぐろ", "まぐろ山かけ","まぐろユッケ（卵黄醤油）","かにみそ", "軍艦甘エビ", "とびこ軍艦","ししゃもこ軍艦","たらマヨ", "たらこ", "数の子松前漬け","コーン","ツナサラダ", "シーサラダ", "カニ風サラダ","たまごサラダ","いかオクラめかぶ", "小粒納豆", "きゅうり巻","小粒納豆巻","梅きゅうり巻", "海老フライアボカドロール", "本ずわい蟹軍艦","いくら","たら白子", "あん肝", "鉄火巻"];
-      var selectedValues = [];
-      for (var i = 0; i < 5; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      if (undefined !== aa.obfuscated) {
+          text = `<span class="obfuscated">${text}</span>` 
       }
-     alert(selectedValues.join("\n"));
-    });
-  });
-        $(document).ready(function() {
-    $("#gunkan_10").click(function() {
-      var values = ["軍艦ねぎまぐろ", "まぐろ山かけ","まぐろユッケ（卵黄醤油）","かにみそ", "軍艦甘エビ", "とびこ軍艦","ししゃもこ軍艦","たらマヨ", "たらこ", "数の子松前漬け","コーン","ツナサラダ", "シーサラダ", "カニ風サラダ","たまごサラダ","いかオクラめかぶ", "小粒納豆", "きゅうり巻","小粒納豆巻","梅きゅうり巻", "海老フライアボカドロール", "本ずわい蟹軍艦","いくら","たら白子", "あん肝", "鉄火巻"];
-      var selectedValues = [];
-      for (var i = 0; i < 10; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      if (undefined !== aa.score) {
+          // 文字 → <u>文字</u> に変換する
+          let name = aa.score.name
+          let objective = aa.score.objective
+          text = `<code class="scoreboard" data-player="${name}" data-objective="${objective}" data-scoreboard="${name}§§${objective}">${name}->${objective}</code>`
+          //@とシフトで出る　‘‘
       }
-      alert(selectedValues.join("\n"));
-    });
-  });
-    $(document).ready(function() {
-    $("#saido_3").click(function() {
-      var values = ["鯛だし塩ラーメン","わかめうどん", "きつねうどん", "かけうどん","魚のアラの赤だし","あさりの赤だし", "あおさと海苔の赤だし", "はまぐりの味噌汁","あおさと海苔の味噌汁","季節の茶碗蒸し", "季節のあんかけ茶碗蒸し", "フライドチキン","フライドポテト","まるごと海老の柚子こしょう天ぷら", "ポテサラ", "だし巻き玉子"];
-      var selectedValues = [];
-      for (var i = 0; i < 3; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      if (undefined !== aa.selector) {
+          // 文字 → <u>文字</u> に変換する
+          let selector = aa.selector
+          text = `<code class="selector">${selector}</code>`
+          //@とシフトで出る　‘‘
       }
-      alert(selectedValues.join("\n"));
-    });
-  });
-      $(document).ready(function() {
-    $("#saido_5").click(function() {
-      var values = ["鯛だし塩ラーメン","わかめうどん", "きつねうどん", "かけうどん","魚のアラの赤だし","あさりの赤だし", "あおさと海苔の赤だし", "はまぐりの味噌汁","あおさと海苔の味噌汁","季節の茶碗蒸し", "季節のあんかけ茶碗蒸し", "フライドチキン","フライドポテト","まるごと海老の柚子こしょう天ぷら", "ポテサラ", "だし巻き玉子"];
-      var selectedValues = [];
-      for (var i = 0; i < 5; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      
+      result += text
+    }
+    return result
+  }
+  
+  // ↓ jQuery イベントで検索
+  $('#test3').on('click', event => {
+    let tellrawText
+    let titleText
+    let subtitleText
+    //event.target
+    //alert($(event.target).text())
+    let moji = $('#test2').val()
+    const mojis = moji.split(/\n/);
+    for(const mojiLine of mojis){
+       const re = /\/(tellraw @[arpes](?:\[.+\])?|title @[arpes](?:\[.+\])? (title|subtitle|actionbar)) (.+)/
+      let matchresult = mojiLine.match(re)
+  
+      if (matchresult === null){
+        alert("コマンドではありません")
+        return
       }
-      alert(selectedValues.join("\n"));
-    });
-  });
-      $(document).ready(function() {
-    $("#saido_10").click(function() {
-      var values = ["鯛だし塩ラーメン","わかめうどん", "きつねうどん", "かけうどん","魚のアラの赤だし","あさりの赤だし", "あおさと海苔の赤だし", "はまぐりの味噌汁","あおさと海苔の味噌汁","季節の茶碗蒸し", "季節のあんかけ茶碗蒸し", "フライドチキン","フライドポテト","まるごと海老の柚子こしょう天ぷら", "ポテサラ", "だし巻き玉子"];
-      var selectedValues = [];
-      for (var i = 0; i < 10; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
+      moji = matchresult[3] 
+      let is_tellraw = matchresult[1].startsWith("tellraw")
+      let is_subtitle =matchresult[2] !==undefined&& matchresult[2].startsWith("subtitle")
+      let result = convertForTool(moji)
+      if(is_tellraw){
+        tellrawText = result
+      } else if (is_subtitle){
+        subtitleText = result
+      } else{
+        titleText = result
       }
-      alert(selectedValues.join("\n"));
-    });
-  });
-    $(document).ready(function() {
-    $("#dezato_3").click(function() {
-      var values = ["練乳いちごパフェ","北海道ミルククレープメルバ", "カタラーナアイスブリュレ", "フォンダンショコラバニラアイス添え","フォンダンショコラ","ショコラケーキリッチ", "北海道ミルククレープ", "クラシックプリン","大学いも","わらびもち", "フローズンマンゴー", "懐かしノメロンシャーベット","北海道バニラアイス"];
-      var selectedValues = [];
-      for (var i = 0; i < 3; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
-      }
-      alert(selectedValues.join("\n"));
-    });
-  });
-      $(document).ready(function() {
-    $("#dezato_5").click(function() {
-      var values = ["練乳いちごパフェ","北海道ミルククレープメルバ", "カタラーナアイスブリュレ", "フォンダンショコラバニラアイス添え","フォンダンショコラ","ショコラケーキリッチ", "北海道ミルククレープ", "クラシックプリン","大学いも","わらびもち", "フローズンマンゴー", "懐かしノメロンシャーベット","北海道バニラアイス"];
-      var selectedValues = [];
-      for (var i = 0; i < 5; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
-      }
-      alert(selectedValues.join("\n"));
-    });
-  });
-      $(document).ready(function() {
-    $("#dezato_10").click(function() {
-      var values = ["練乳いちごパフェ","北海道ミルククレープメルバ", "カタラーナアイスブリュレ", "フォンダンショコラバニラアイス添え","フォンダンショコラ","ショコラケーキリッチ", "北海道ミルククレープ", "クラシックプリン","大学いも","わらびもち", "フローズンマンゴー", "懐かしノメロンシャーベット","北海道バニラアイス"];
-      var selectedValues = [];
-      for (var i = 0; i < 10; i++) {
-        var randomIndex = Math.floor(Math.random() * values.length);
-        selectedValues.push(values[randomIndex]);
-        values.splice(randomIndex, 1);
-      }
-      alert(selectedValues.join("\n"));
-    });
-  });
+    }
+  
+    
+    // データをJSONに変換 (デバッグ用)
+    //moji = JSON.stringify(s)
+  
+    // 出力欄に反映
+    //$('#test1').val(result)
+    
+    if (titleText){
+      // 実行ボタンを押すと送信されるようにした。
+      $('#title_text').val(titleText)
+      $('#subtitle_text').val(subtitleText)
+      $('#title').submit()
+    }	else {
+      // 実行ボタンを押すと送信されるようにした。
+      $('#tellraw_text').val(tellrawText)
+      $('#tellraw').submit()
+    }
+  
+  
+  
+  })
