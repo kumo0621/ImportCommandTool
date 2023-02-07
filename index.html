@@ -1,50 +1,54 @@
-<div>
-  入力(JSON)
-  <textarea placeholder="ここにJSONコードを入力" id="test2" class="text">
-  </textarea>
-    <!-- ["",{"text":"\u6587\u5b57"},{"text":"\u8d64\u8272","color":"dark_red"},{"text":"\u30a2\u30f3\u30c0\u30fc\u30e9\u30a4\u30f3","underlined":true},{"text":"\u30af\u30ea\u30c3\u30af","clickEvent":{"action":"open_url","value":"https://kamesuta.com/"}}] -->
-    <button id="test3">インポート用コードに変換</button>
-  </div>
-  <body>
-  <head>
+<!DOCTYPE html>
+<html>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コマンドをインポートしてくれるツール</title>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-  
-  <!-- <div>
-    出力
-    <textarea id="test1" class="text">
-    </textarea>
-  </div>
-  
-  <div>
-    想定（デバック用）
-    <textarea class="text">
-    デバックメモ（ここに書く↓↓）
-    </textarea>
-  </div> -->
-  
-  
-  
-  <div style="display:none;">
-    <form id="tellraw" method="POST" action="https://minecraft.tools/en/tellraw.php">
-      <input placeholder="ここにインポート用コードを張り付ける" id="tellraw_text" type="text" name="tellraw" value="" class="import">
-      <input type="text" name="selector" value="@a">
-      <button type=submit>送信</button>
-    </form>
-    <form id="title" method="GET" action="https://minecraft.tools/en/title.php">
-      <input id="title_text" name="title" value="">
-      <input id="subtitle_text" name="subtitle" value="">
-      <input name="duration" value="5">
-      <input name="fadein" value="1">
-      <input name="fadeout" value="1">
-      <input name="selector" value="@a">
-      <button type=submit>送信</button>
 
-    </form>
+<body>
+    <div>
+        入力(JSON)
+        <textarea placeholder="ここにJSONコードを入力" id="test2" class="text"></textarea>
+        <!-- ["",{"text":"\u6587\u5b57"},{"text":"\u8d64\u8272","color":"dark_red"},{"text":"\u30a2\u30f3\u30c0\u30fc\u30e9\u30a4\u30f3","underlined":true},{"text":"\u30af\u30ea\u30c3\u30af","clickEvent":{"action":"open_url","value":"https://kamesuta.com/"}}] -->
+        <button id="test3">インポート用コードに変換</button>
+    </div>
+
+    <!-- <div>
+      出力
+      <textarea id="test1" class="text">
+      </textarea>
+    </div>
+    
+    <div>
+      想定（デバック用）
+      <textarea class="text">
+      デバックメモ（ここに書く↓↓）
+      </textarea>
+    </div> -->
+
+
+
+    <div style="display:none;">
+        <form id="tellraw" method="POST" action="https://minecraft.tools/en/tellraw.php">
+            <input placeholder="ここにインポート用コードを張り付ける" id="tellraw_text" type="text" name="tellraw" value=""
+                class="import">
+            <input type="text" name="selector" value="@a">
+            <button type=submit>送信</button>
+        </form>
+        <form id="title" method="GET" action="https://minecraft.tools/en/title.php">
+            <input id="title_text" name="title" value="">
+            <input id="subtitle_text" name="subtitle" value="">
+            <input name="duration" value="5">
+            <input name="fadein" value="1">
+            <input name="fadeout" value="1">
+            <input name="selector" value="@a">
+            <button type=submit>送信</button>
+        </form>
+    </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
     <script src="index.js"></script>
-  </body>
-  </div>
+</body>
+</html>
